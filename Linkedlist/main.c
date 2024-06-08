@@ -17,18 +17,21 @@ struct linkedlist
     int length;
 };
 
-
+//Initialize linkedlist
+struct linkedlist *makelist(){
+return (struct linkedlist *) malloc(sizeof(struct linkedlist));
+}
 
 // Initialize node
-struct node makenode(char x)
+struct node *makenode(char c)
 {
-    struct node temp;
-    temp.data = x;
-    return temp;
+    struct node *n= (struct node *) malloc(sizeof(struct node));
+    n->data= c;
+    return n;
 }
 
 //Search function checks the availability of a character in the list
-bool searchLinkedList(struct linkedlist *l, char a)
+bool Search(struct linkedlist *l, char a)
 {
 
     printf("length2 is %d \n", l->length);
@@ -66,7 +69,7 @@ bool searchLinkedList(struct linkedlist *l, char a)
 void prependNode(struct linkedlist *l, struct node *n)
 {
     printf("length1 is %d \n", l->length);
-    int result = searchLinkedList(l, tolower(n->data));
+    int result = Search(l, tolower(n->data));
     printf("length3 is %d \n", l->length);
     if (result == 0)
     {
@@ -99,30 +102,4 @@ void printLinkedlist(struct linkedlist *l){
 }
 
 
-// counts number of dublicated characters, numbers & whitespaces
-size_t dublicatesCounter(struct linkedlist *l, char s){
-
-        struct node *x = (struct node *) malloc(sizeof(struct node));
-        *x = makenode(tolower(s));
-        prependNode(l, x);
-        return l->length;
-}
-
-size_t dublicatesRegister(struct linkedlist *l, char *s){
-
-    for (size_t i = 0; i < strlen(s); i++) {
-    printf("iterating through %c \n", *(s+i));
-      for (size_t i2 = i+1; i2 < strlen(s); i2++) {
-        int result = compare(tolower(*(s + i)), tolower(*(s + i2)));
-      if (result == 1){
-       printf("comparison result of %c and %c is  %d \n", *(s + i), *(s + i2), result);
-       printf("number of dublicates are now %zu :", dublicatesCounter(l, *(s +i )));
-
-       break;
-       }
-      }
-  }
-
-  return l->length;
-}
 
