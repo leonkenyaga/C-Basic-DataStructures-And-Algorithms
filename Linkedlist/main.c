@@ -17,7 +17,9 @@ struct linkedlist
     int length;
 };
 
-/* makepoint: make a point from x and y components */
+
+
+// Initialize node
 struct node makenode(char x)
 {
     struct node temp;
@@ -25,6 +27,7 @@ struct node makenode(char x)
     return temp;
 }
 
+//Search function checks the availability of a character in the list
 bool searchLinkedList(struct linkedlist *l, char a)
 {
 
@@ -79,6 +82,7 @@ void prependNode(struct linkedlist *l, struct node *n)
     printf("length4 is %d \n", l->length);
 }
 
+//recursively builds function stack to the first sdded character
 void printListData(struct node *n)
 {
     if (n->next != NULL)
@@ -86,27 +90,14 @@ void printListData(struct node *n)
     printf("%c", n->data);
     
 }
-
+//prints linkedlist in a first added to last added character order
 void printLinkedlist(struct linkedlist *l){
     if (l->head !=NULL){
     printListData(l->head);
     }
     printf("\n");
 }
-bool compare(char a, char b)
-{
 
-    if (a == b)
-    {
-        printf(" %c and %c are equal \n", a, b);
-        return true;
-    }
-    else
-    {
-        printf("%c and %c are not equal \n", a, b);
-        return false;
-    }
-}
 
 // counts number of dublicated characters, numbers & whitespaces
 size_t dublicatesCounter(struct linkedlist *l, char s){
